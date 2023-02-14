@@ -24,7 +24,7 @@ from launch_ros import actions
 
 def generate_launch_description():
     """Generate a launch description for a single serial driver."""
-    config_file = os.path.join(get_package_share_directory("gnss_receiver"), "config", "u-blox.yaml")
+    config_file = os.path.join(get_package_share_directory("pilsbot_gnss_receiver"), "config", "u-blox.yaml")
     driver_node = actions.Node(
         package='nmea_navsat_driver',
         executable='nmea_serial_driver',
