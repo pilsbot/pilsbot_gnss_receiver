@@ -29,7 +29,11 @@ def generate_launch_description():
         package='nmea_navsat_driver',
         executable='nmea_serial_driver',
         output='screen',
-        parameters=[config_file])
+        parameters=[config_file],
+        # The driver exits when /dev/ttyGPS is missing (receiver unplugged or
+        # not enumerated yet) and never retries; start it again until it is there.
+        respawn=True,
+        respawn_delay=5.0)
 
     return LaunchDescription([driver_node])
 
